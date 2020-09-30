@@ -30,4 +30,8 @@
   - E（Y|A=1）means of Y among people with A=1
   - E（Y1) means of Y if the whole population was treated with A=1
 
+- 其他的因果影响
+  - E（Y1/Y0）: causal relative risk
+  - E（Y1-Y0|A=1）: causal effect of treatment on the treated
+  - E（Y1-Y0|V=v）:average causal effect in the subpopulation with covariate V=v
 
