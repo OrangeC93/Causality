@@ -22,3 +22,12 @@
 什么是因果影响：there's a only causal effect if Y1 != Y0, 也就是说既需要知道Y1也需要知道Y0，并且两个不”相等“
 
 ## 因果关系
+- Average Causal Effect: E(Y1-Y0) average value of Y if everyone was treated with A1 minus average value of Y if everyone was treated with A=0
+  - 例子 Regional A=1 vs genral A=0 anesthesia for hip fracture surgery on risk of major pulmonary complications
+  - 假设 E（Y1-Y0） = -0.1 代表 the probability of major pulmonary complications is lower by 0.1 if given regional anesthesia compared with general anesthesia
+
+- Conditioning vs Setting: E（Y1-Y0）！= E（Y|A=1）- E（Y|A=0）原因是 expected value of Y given A=1 限制了subpopulation of people who had A=1 actually, 而他们可能跟whol额population 不同
+  - E（Y|A=1）means of Y among people with A=1
+  - E（Y1) means of Y if the whole population was treated with A=1
+
+
