@@ -35,3 +35,10 @@
   - E（Y1-Y0|A=1）: causal effect of treatment on the treated
   - E（Y1-Y0|V=v）:average causal effect in the subpopulation with covariate V=v
 
+## 因果关系假设
+- SUTVA: (1) no interference （2）one version of treatment
+- Consistency assumption：the potential outcome under treatment A=a, Ya is equal to the observed outcome if the actual treatment received is A=a
+- Ignorability assumption：given pre treatment covariates X, treatment assignment is independent from the potential outcomes
+- Positivity assumption: for every set of values for X, treatment asignment was not determinitstic
+
+## Statification
