@@ -41,4 +41,16 @@
 - Ignorability assumption：given pre treatment covariates X, treatment assignment is independent from the potential outcomes
 - Positivity assumption: for every set of values for X, treatment asignment was not determinitstic
 
-## Statification
+## 分层
+Standardization: involves stratifying and then averaging
+- obtain a treatment effect within each stratum and then across stratum, weighting by the probability (size) of each stratum
+
+举例：对比两种糖尿病的直聊方法：沙格列汀和西他列汀，结果是MACE(主要不良心脏事件)，问题是沙格列汀用户在过去更可能会吃一些OAD的药，而这种药会有更高的MACE风险
+
+解决方案：计算沙格列汀和西他列汀用户的MACE rate in两类subpopulations：用户过去有用过OAD，用户过去没有用过OAD，然后计算加权均值（根据proportion of people in subpopulation），如果在以前OAD使用变量中，treatment can be thought of as randomized，这就是因果影响
+
+问题：这可能会有many X varaibles needed to achieve ignorability，或者导致很多空值
+
+
+
+
