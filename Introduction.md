@@ -51,6 +51,7 @@ Standardization: involves stratifying and then averaging
 
 问题：这可能会有many X varaibles needed to achieve ignorability，或者导致很多空值
 
-
-
-
+## Incident user and active comparator designs
+举例：瑜伽对血压有影响吗？
+- incident user：完全没做过瑜伽 vs 从某一时间点开始，开始做瑜伽
+- comparator design：看看其他运动对血压影响
