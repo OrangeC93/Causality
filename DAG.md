@@ -44,3 +44,35 @@ Decomposition: start with roots(nodes with no parents), proceed down the descend
 - P(A,B,C,D) = P(D)P(A|D)P(B|D)P(C|A,B)
 
 一个DAG只有一个probability distribution但是一个probability distribution可能对应多个DAG
+
+## Paths and associations
+- 叉子形状： D<-E->F，DF有关
+- Chain形状：D->E->F，DF有关 
+- 反叉子形状：D->E<-F，E是碰撞机，但是DF无关
+
+## Conditional independence (d-separation)
+Blocking: paths can be blocked by conditioning on nodes in the path
+- Chain Block: A->G->B, if we hold G fixed, make the same for AB, AB are not associated.
+- Folk Block: A<-G->B, if we condition on G, the path from A to B is blocked.
+- Collider Block: A->G<-B, if conditioning On G, AB would be associated.
+  - 比如AB是两个开关，G是灯，AB开了会y影响G，但是AB无关
+  - 如果G关掉了（conditioning）如果A开着，B就得关着，AB产生了association
+
+Rules for d separation:
+
+A path is d separated by a set of nodes C if:
+- it contains a chain and the middle part is in c
+- it contains a fork and the middle part is in c
+- it contains an inverted fork and the middle part is not in c, nor any decendants of it
+
+Definition of d seperation: two nodes, A and B, are d separated by a set of nodes C if it blocks every path from A to B
+
+## Confounding revisited
+Frontdoor path: from A to Y is the one that begins with an arrow emanating out of A
+- 比如： A->Z->Y，此时不用control Z， 如果我们想知道A对Y的影响
+
+Backdoor path: from A to Y are paths from A to Y that travel arrows going into A
+- To sufficiently control for confounding, must identify a set of variables that block all backdoor paths from treatment to outcome.
+
+## Backdoor path criterion
+
