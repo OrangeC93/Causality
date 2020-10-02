@@ -23,7 +23,7 @@
 
 ## 因果关系
 - Average Causal Effect: E(Y1-Y0) average value of Y if everyone was treated with A1 minus average value of Y if everyone was treated with A=0
-  - 例子 Regional A=1 vs genral A=0 anesthesia for hip fracture surgery on risk of major pulmonary complications
+  - 例子 regional A=1 vs genral A=0 anesthesia for hip fracture surgery on risk of major pulmonary complications
   - 假设 E（Y1-Y0） = -0.1 代表 the probability of major pulmonary complications is lower by 0.1 if given regional anesthesia compared with general anesthesia
 
 - Conditioning vs Setting: E（Y1-Y0）！= E（Y|A=1）- E（Y|A=0）原因是 expected value of Y given A=1 限制了subpopulation of people who had A=1 actually, 而他们可能跟whol额population 不同
@@ -38,14 +38,14 @@
 ## 因果关系假设
 - SUTVA: (1) no interference （2）one version of treatment
 - Consistency assumption：the potential outcome under treatment A=a, Ya is equal to the observed outcome if the actual treatment received is A=a
-- Ignorability assumption：given pre treatment covariates X, treatment assignment is independent from the potential outcomes
+- Ignorability assumption：given pre treatment covariates X, treatment assignment is independent from the potential outcomes, Y0,Y1 || A|X
 - Positivity assumption: for every set of values for X, treatment asignment was not determinitstic
 
 ## 分层
 Standardization: involves stratifying and then averaging
 - obtain a treatment effect within each stratum and then across stratum, weighting by the probability (size) of each stratum
 
-举例：对比两种糖尿病的直聊方法：沙格列汀和西他列汀，结果是MACE(主要不良心脏事件)，问题是沙格列汀用户在过去更可能会吃一些OAD的药，而这种药会有更高的MACE风险
+举例：对比两种糖尿病的治疗方法：沙格列汀和西他列汀，结果是MACE(主要不良心脏事件)，问题是沙格列汀用户在过去更可能会吃一些OAD的药，而这种药会有更高的MACE风险
 
 解决方案：计算沙格列汀和西他列汀用户的MACE rate in两类subpopulations：用户过去有用过OAD，用户过去没有用过OAD，然后计算加权均值（根据proportion of people in subpopulation），如果在以前OAD使用变量中，treatment can be thought of as randomized，这就是因果影响
 
