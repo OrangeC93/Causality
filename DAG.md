@@ -22,3 +22,25 @@ DAG(directed acyclic graphs直接的非循环图表)
 - A->Z->D: D是A的后代
 
 ## DAG之间的关系和概率矩阵
+DAG encode assumptions about dependencies between nodes/varaibles
+- 哪些变量相互independent
+- 哪些变量仙湖conditionally independent
+
+例如：D->A->B C
+- P(C|A,B,D)=P(C), 说明C独立于其他所有变量
+- P(B|A,C,D)=P(B|A)
+- P(B|D)!=P(B),说明BD是marginally dependent
+- P(D|A,B,C)=P(D|A)
+
+Decomposition: start with roots(nodes with no parents), proceed down the descendant line, always conditioning on parents
+
+例如：D->A->B C
+- P(A,B,C,D) = P(C)P(D)P(A|D)P(B|A)
+
+例如：D->A D->B->C
+- P(A,B,C,D) = P(D)P(A|D)P(B|D)P(C|B)
+
+例如：D->A->C D->B->C
+- P(A,B,C,D) = P(D)P(A|D)P(B|D)P(C|A,B)
+
+一个DAG只有一个probability distribution但是一个probability distribution可能对应多个DAG
