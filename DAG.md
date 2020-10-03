@@ -74,8 +74,22 @@ Frontdoor path: from A to Y is the one that begins with an arrow emanating out o
 Backdoor path: from A to Y that travel arrows going into A
 - To sufficiently control for confounding, must identify a set of variables that block all backdoor paths from trea tment to outcome.
 
-## Backdoor path criterion
+## 方法1：Backdoor path criterion
 
 Sufficient sets of confounders: a set of variables X is sufficient to control for confounding if: (1)it blocks all backdoor paths from treatment to outcome (2) it doesn't include any descendants of treatment
 
+例子见pictures folder
+
 DAG的方法虽然好，但是现实生活中，很难画出fairly accurate DAG.
+
+## 方法2：Disjunctive cause criterion
+另一个variable selection方法叫：Disjunctive cause criterion，控制所有影响treatment和outcome的variables
+
+举例：
+- observed pre treatment variables {MWV}
+- unobserved pre treatment variables {U1U2}
+- 假设我们知道WV are causes of AY or both, M is not a cause of either A or Y
+
+因此：
+1. use all pre treatment covariates {MWV}
+2. use variables based on disjunctive {WV}
