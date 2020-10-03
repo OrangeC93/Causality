@@ -93,3 +93,8 @@ DAG的方法虽然好，但是现实生活中，很难画出fairly accurate DAG.
 因此：
 1. use all pre treatment covariates {MWV}
 2. use variables based on disjunctive {WV}
+
+总结：
+- 并不能选出最小set of variables to controlfor
+- but it's conceptually simpler
+- is guaranteed to select a set of variables that are sufficient to control for confounding, if (1) such a set exist (2)we correctly identify all of the observed causes of A and Y
