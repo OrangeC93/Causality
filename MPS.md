@@ -17,3 +17,8 @@ Why not always randomize:
 Matching方法: 可以将观察实验变成more randomized实验，主要思想就是match individuals in the treated group A=1 to individuals in the control group A=0 on the covariates X
 
 Matching好处：（1）在设计实验的步骤就控制住confounders，因此不用手动修改outcome（2）可以保证positivity assumption（3）outcome计算也变得很简单（4）matching之后就可以认为是个随机实验
+
+## Overview of Matching
+Single covariate: 很简单
+
+Multiple covariates：很难match on full set of covariates. 在一个随机实验中，treated和control subject are not perfect matches either, the distribution of covariates is balanced between groups 叫做 stochastic balance，matching **closely** on covariates can achieve stochastic balance
