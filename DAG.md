@@ -71,8 +71,11 @@ Definition of d seperation: two nodes, A and B, are d separated by a set of node
 Frontdoor path: from A to Y is the one that begins with an arrow emanating out of A
 - 比如： A->Z->Y，此时不用control Z， 如果我们想知道A对Y的影响
 
-Backdoor path: from A to Y are paths from A to Y that travel arrows going into A
-- To sufficiently control for confounding, must identify a set of variables that block all backdoor paths from treatment to outcome.
+Backdoor path: from A to Y that travel arrows going into A
+- To sufficiently control for confounding, must identify a set of variables that block all backdoor paths from trea tment to outcome.
 
 ## Backdoor path criterion
 
+Sufficient sets of confounders: a set of variables X is sufficient to control for confounding if: (1)it blocks all backdoor paths from treatment to outcome (2) it doesn't include any descendants of treatment
+
+DAG的方法虽然好，但是现实生活中，很难画出fairly accurate DAG.
