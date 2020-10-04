@@ -96,6 +96,7 @@ Possible hidden bias:
 - hidden bias: 可能会遗落一些 unobserved confounders
 
 Hidden bias: R packages sensitivity22k
+- πj和πk是probability that person j receives treatment, 假设jkmatched，那么πj和πk应该相等，there‘s no hidden bias
 ![Image](/pictures/sensitivity_analysis.png)
 - 假设 we have evidence of a treatment effect，也就是系数=1，没有hidden bias
 - 提高系数 until evidence of treatment effect goes away(no longer statistically significant)
