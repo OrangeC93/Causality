@@ -53,6 +53,9 @@ Robust Mahalanobis distance: Mahalanobis distance可能会受到outliers影响, 
 Caliper: we might prefer to exclude treated subjects for whom there does not exist a good match. A bad match can be defined using caliper-maximum acceptable distance(if no matches within caliper, positivity assumption would be violated, so excludng these subjects makes assumption more realistc, drawback is that population is harder to define). 
 
 ## Optimal matching
-- 最小化全局distance，计算较慢
+
+优点和缺点：最小化全局distance，计算较慢
+
+Sparse optimal matching: 加一些constraints which can be imposed to make optimal matching computationally feasible for larger data sets. 比如：match within hospitals in a multi-site clinical study, match within primary disease category.
 
 ## Accessing balance
