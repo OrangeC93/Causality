@@ -84,4 +84,7 @@ randomization test 也叫 permutation tests, exact test, 主要思想：
 ![Image](/pictures/mps_2.png)
 ![Image](/pictures/mps_3.png)
 
-McNemar test（分类）: 以上描述的等于McNemar test，r包里面有个macnemar.test(matrix)，直接可以用
+工具包：
+- McNemar test（分类）: 以上描述的等于McNemar test，r包里面有个macnemar.test(matrix)，直接可以用
+- ttest（continious data）
+- logistic regression, stratified cox model, generalized estimating equations
