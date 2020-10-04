@@ -117,7 +117,7 @@ Balancing score: there're 2 subjects have the same value of propensity score, bu
 估算propensity score
 - randomized trial， 一般来说是知道的 P(A=1|X) = P（A=1）= 0.5
 - observational study, it'll be unkown, 需要估算
-  - 需要估算 P(A=1|X)， 可以用logistic regression, fit a model outcome A（因变量）, covariates X（自变量s）, from the model get the predicted probability for each subject, that's estimated propensity score.
+  - 需要估算 P(A=1|X)， 可以用logistic regression, fit a model outcome A（因变量, treatment A=0 或者A=1）, covariates X（自变量s）, from the model get the predicted probability for each subject, that's estimated propensity score.
 
 ## Propensity score matching
 Overlap: plot the propensity score distribution for treated and control group
