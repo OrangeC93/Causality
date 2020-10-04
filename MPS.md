@@ -69,4 +69,4 @@ Did matching work?
   - Rule of thumb：（1）value<0.1 indicate adequate balance (2) value 0.1-0.2 are not too alarming (3) values>0.2 indicate serious imbalance
 
 举例
-![Image](/pictures/smd_eg.pgn)
+![Image](/pictures/smd_eg.png)
