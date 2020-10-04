@@ -88,3 +88,9 @@ randomization test 也叫 permutation tests, exact test, 主要思想：
 - McNemar test（分类）: 以上描述的等于McNemar test，r包里面有个macnemar.test(matrix)，直接可以用
 - ttest（continious data）
 - logistic regression, stratified cox model, generalized estimating equations
+
+
+## Sensitivity analysis
+Possible hidden bias: 
+- overt bias: there was imbalanced on observed covariates
+- hidden bias: 可能会遗落一些 unobserved confounders
