@@ -94,3 +94,5 @@ randomization test 也叫 permutation tests, exact test, 主要思想：
 Possible hidden bias: 
 - overt bias: there was imbalanced on observed covariates
 - hidden bias: 可能会遗落一些 unobserved confounders
+
+Hidden bias
