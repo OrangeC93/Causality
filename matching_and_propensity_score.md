@@ -125,6 +125,13 @@ Overlap: plot the propensity score distribution for treated and control group
 
 Trimming tails: if there's a lack of overlap, trimming the tails is an option, which means removing subjects who have extreme values of the propensity score.
 - For example, removing:
-  - control subjects whose propensity score is then tahnt the minimum in the treatment 
+  - control subjects whose propensity score is then than the minimum in the treatment 
   - treated subjects whose propensity score is greater than the maximum in the control group
  - Trimming the tails makes the positivity assumption more reasonalbe, preventing extrapolation
+
+Matching: 
+- 方法1: compute a distance between the propensity score for each treated subject with every control, then use nearest neighbor or optimal matching as before. 
+- 事实上: logit(log-odds) of the propensity score is often used, rather than the propensity score itself
+  - The propensity score is bounded betwen [0,1], makeing many values seem similar
+  - Logit of the propensity score is unbounded, this transformation essentially stretches the distribution, while preserving ranks
+  - Match on logit(π) rather than π
