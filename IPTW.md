@@ -16,3 +16,19 @@ Estimator:
 ![image](/pictures/estimator.png)
 
 ## Marginal structural models
+Marginal structural models: model for the mean of potenial outcomes
+- marginal: model that is not conditional on the confounders (population average)
+- structural: model for ppotential outcomes, **not observed outcomes**
+
+Linear MSM
+![image](/pictures/linear_msm.png)
+
+Logistic MSM
+![image](/pictures/logistic_msm.png)
+
+MSM with effect Modification
+- MSMs can also include effect modifiers
+- Suppose V is a variable that modifies the effect of A
+- A linear MSM with effect modification
+![image](/pictures/msm_effect_modification.png)
+## IPTW estimation
