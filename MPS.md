@@ -40,7 +40,7 @@ Mahalanobis distance: 可以认为是square root of the sum of squared distances
 Robust Mahalanobis distance: Mahalanobis distance可能会受到outliers影响, 但是ranks might be more relevant, eg highest and 2nd highest ranked values of covariates perhaps should be treated as similar, even if the values are far apart.
 
 ## Greedy(nearest-neighbor) matching 
-步骤
+步骤:
 1. randomly order list of treated subjects and control subjects
 2. start with the first treated subject. Match to the control with the smallest distance (this is greedy)
 3. remove the matched control from the list of available matches
@@ -48,8 +48,11 @@ Robust Mahalanobis distance: Mahalanobis distance可能会受到outliers影响, 
 5. repeat step 3 and 4 until you have matched all treated subjects
 
 - 好处：（1）直接，简单，容易解释，很快
-- 坏处：（1）对init order比较敏感（2）并不是最优，没有考虑到全局，有可能有bad matches
+- 坏处：（1）对init order比较敏感（2）并不是最优，没有考虑到全局，有可能有bad matches，参考optimal matching
 
-Caliper： we might prefer to exclude treated subjects for whom there does not exist a good match. A bad match can be defined using caliper-maximum acceptable distance(if no matches within caliper, positivity assumption would be violated, so excludng these subjects makes assumption more realistc, drawback is that population is harder to define). 
+Caliper: we might prefer to exclude treated subjects for whom there does not exist a good match. A bad match can be defined using caliper-maximum acceptable distance(if no matches within caliper, positivity assumption would be violated, so excludng these subjects makes assumption more realistc, drawback is that population is harder to define). 
 
 ## Optimal matching
+- 最小化全局distance，计算较慢
+
+## Accessing balance
