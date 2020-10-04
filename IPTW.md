@@ -10,7 +10,7 @@ Observational studies
   - There's confounding in the original population
   - IPTW creates a pseudo-population where treatment assignment no longer depends on X
     - No confounding in the pseudo population
-![image](/pictures/pseudo-population.png)
+![image](/pictures/pseudo_population.png)
 
 Estimator: 
 ![image](/pictures/estimator.png)
@@ -37,7 +37,7 @@ General MSM
 
 ## IPTW estimation
 Estimation in MSMs: 不能直接用regression estimation方法，因为有从founding，所以we can create the pseudo population(otained from IPTW) which is free from confounding(assuming ignorability and positivity), we can therefore estimate MSM parameters by solving estimating equations for the observed data of pseudo population
-
+![image](/pictures/estimation_msm.png)
 具体步骤：
 1. estimate propensity score
 2. create weights
@@ -47,3 +47,5 @@ Estimation in MSMs: 不能直接用regression estimation方法，因为有从fou
 4. use software to fit a weighted generalized linear model
 5. use asymptotic(sandwich) variance estimator(or bootstrapping)
   - this accounts for fact that pseudo population might be larger than sample size
+
+## Assessng balance
