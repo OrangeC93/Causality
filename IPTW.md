@@ -36,3 +36,14 @@ General MSM
 ![image](/pictures/general_msm.png)
 
 ## IPTW estimation
+Estimation in MSMs: 不能直接用regression estimation方法，因为有从founding，所以we can create the pseudo population(otained from IPTW) which is free from confounding(assuming ignorability and positivity), we can therefore estimate MSM parameters by solving estimating equations for the observed data of pseudo population
+
+具体步骤：
+1. estimate propensity score
+2. create weights
+  - 1 divied by propensity score for treated subjects
+  - 1 divided by 1 minus the propensity score for control subjects
+3. specify the msm interest
+4. use software to fit a weighted generalized linear model
+5. use asymptotic(sandwich) variance estimator(or bootstrapping)
+  - this accounts for fact that pseudo population might be larger than sample size
