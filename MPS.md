@@ -66,4 +66,7 @@ Did matching work?
 - Standardized differene: the difference in means between groups, divided by the pooled standard deviation.
   - smd = (Xt-Xc)/sqrt((St^2+Sc^2)/2)
   - 好处：不依赖sample size
-  - Rule of thumb： （1）value<0.1 indicate adequate balance (2) value 0.1-0.2 are not too alarming (3) values>0.2 indicate serious imbalance
+  - Rule of thumb：（1）value<0.1 indicate adequate balance (2) value 0.1-0.2 are not too alarming (3) values>0.2 indicate serious imbalance
+
+举例
+![Image](/pictures/smd_eg.pgn)
