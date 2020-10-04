@@ -47,8 +47,9 @@ Robust Mahalanobis distance: Mahalanobis distance可能会受到outliers影响, 
 4. move on to the next treated subject. Match to the control with the smallest distance.
 5. repeat step 3 and 4 until you have matched all treated subjects
 
-- 好处：（1）直接，简单，容易解释，很快
-- 坏处：（1）对init order比较敏感（2）并不是最优，没有考虑到全局，有可能有bad matches，参考optimal matching
+好处：（1）直接，简单，容易解释，很快
+
+坏处：（1）对init order比较敏感（2）并不是最优，没有考虑到全局，有可能有bad matches，参考optimal matching
 
 Caliper: we might prefer to exclude treated subjects for whom there does not exist a good match. A bad match can be defined using caliper-maximum acceptable distance(if no matches within caliper, positivity assumption would be violated, so excludng these subjects makes assumption more realistc, drawback is that population is harder to define). 
 
