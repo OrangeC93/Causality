@@ -95,4 +95,9 @@ Possible hidden bias:
 - overt bias: there was imbalanced on observed covariates
 - hidden bias: 可能会遗落一些 unobserved confounders
 
-Hidden bias
+Hidden bias: R packages sensitivity22k
+![Image](/pictures/sensitivity_analysis.png)
+- 假设 we have evidence of a treatment effect，也就是系数=1，没有hidden bias
+- 提高系数 until evidence of treatment effect goes away(no longer statistically significant)
+  - 如果this happens when 系数=1.11， 说明very sensitive to unmeasured confounding (hidden bias)
+  - 如果this happens when 系数=5， 说明 not very sensitive to unmeasured confounding (hidden bias)
