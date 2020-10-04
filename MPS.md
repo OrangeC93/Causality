@@ -81,3 +81,6 @@ randomization test 也叫 permutation tests, exact test, 主要思想：
 
 
 举例
+![Image](/pictures/mps_1.png)
+![Image](/pictures/mps_2.png)
+![Image](/pictures/mps_3.png)
