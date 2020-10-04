@@ -135,3 +135,5 @@ Matching:
   - The propensity score is bounded betwen [0,1], makeing many values seem similar
   - Logit of the propensity score is unbounded, this transformation essentially stretches the distribution, while preserving ranks
   - Match on logit(π) rather than π
+
+Caliper: 有个容忍的max distance，实际上一般用0.2 * sd of logit of the propensity score(当计算完propensity score from 逻辑回归, 然后take logit transform of the propensity score, then calculate the sd of the ransformed variable, set the caliper to 0.2 times the value from sd), it commonly done in practice because it semms to work well, but it's somewhat arbitrary, small caliper-less bias, more varaince.
