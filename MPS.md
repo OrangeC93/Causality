@@ -60,3 +60,10 @@ Caliper: we might prefer to exclude treated subjects for whom there does not exi
 Sparse optimal matching: 加一些constraints which can be imposed to make optimal matching computationally feasible for larger data sets. 比如：match within hospitals in a multi-site clinical study, match within primary disease category.
 
 ## Accessing balance
+Did matching work? 
+- hypothesis test: test for a difference in means between treated and controls for each covariate, 2 sample t-test, calculate p value. 但是，p value 和sample size有关系，如果sample size很大，容易导致small difference也容易导致small p value
+
+- Standardized differene: the difference in means between groups, divided by the pooled standard deviation.
+  - smd = (Xt-Xc)/sqrt((St^2+Sc^2)/2)
+  - 好处：不依赖sample size
+  - Rule of thumb： （1）value<0.1 indicate adequate balance (2) value 0.1-0.2 are not too alarming (3) values>0.2 indicate serious imbalance
