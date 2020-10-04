@@ -31,4 +31,8 @@ MSM with effect Modification
 - Suppose V is a variable that modifies the effect of A
 - A linear MSM with effect modification
 ![image](/pictures/msm_effect_modification.png)
+
+General MSM
+![image](/pictures/general_msm.png)
+
 ## IPTW estimation
