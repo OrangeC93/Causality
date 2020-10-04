@@ -38,6 +38,7 @@ General MSM
 ## IPTW estimation
 Estimation in MSMs: 不能直接用regression estimation方法，因为有从founding，所以we can create the pseudo population(otained from IPTW) which is free from confounding(assuming ignorability and positivity), we can therefore estimate MSM parameters by solving estimating equations for the observed data of pseudo population
 ![image](/pictures/estimation_msm.png)
+
 具体步骤：
 1. estimate propensity score
 2. create weights
@@ -52,3 +53,11 @@ Estimation in MSMs: 不能直接用regression estimation方法，因为有从fou
 Balance after weighting: covariate balance can be checked on the weighted sample using standarized difference: in a table or in a plot.
 
 Standardized differences after weighting: same idea, except on weighted means and weighted variances. 
+
+If imbalance after weighting
+- Can refine propensity score model
+  - interactions
+  - non linearity
+- Can then reassess balance
+
+## Distribution of weights
