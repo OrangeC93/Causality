@@ -117,4 +117,14 @@ Balancing score: there're 2 subjects have the same value of propensity score, bu
 估算propensity score
 - randomized trial， 一般来说是知道的 P(A=1|X) = P（A=1）= 0.5
 - observational study, it'll be unkown, 需要估算
-  - 需要估算 P(A=1|X)， 可以用logistic regression, fit a model outcome A, covariates X, from the model get the predicted probability for each subject, that's estimated propensity score.
+  - 需要估算 P(A=1|X)， 可以用logistic regression, fit a model outcome A（因变量）, covariates X（自变量s）, from the model get the predicted probability for each subject, that's estimated propensity score.
+
+## Propensity score matching
+Overlap: plot the propensity score distribution for treated and control group
+- If it's well overlap, the positivity assumption seems reasonable
+
+Trimming tails: if there's a lack of overlap, trimming the tails is an option, which means removing subjects who have extreme values of the propensity score.
+- For example, removing:
+  - control subjects whose propensity score is then tahnt the minimum in the treatment 
+  - treated subjects whose propensity score is greater than the maximum in the control group
+ - Trimming the tails makes the positivity assumption more reasonalbe, preventing extrapolation
