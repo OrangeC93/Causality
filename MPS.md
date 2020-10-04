@@ -102,3 +102,19 @@ Hidden bias: R packages sensitivity22k
 - 提高系数 until evidence of treatment effect goes away(no longer statistically significant)
   - 如果this happens when 系数=1.11， 说明very sensitive to unmeasured confounding (hidden bias)
   - 如果this happens when 系数=5， 说明 not very sensitive to unmeasured confounding (hidden bias)
+
+## Propensity score
+Propensity score: the probability of receiving treatment rather than control, given covariates X. Define A=1 for treatment and A=0 for control, denote the rppensity score for subject i by πi, πi=P(A=1|Xi).
+
+比如：age was the only X variable and older people were more likely to get treatment. Then the propensity score would be larger for older ages P(A=1|age=60) > P(A=1|age=30), if person i has a propensity score value of 0.3, that means that, given their particular covariate values, there's a 30% chance they will be treated.
+
+Balancing score: there're 2 subjects have the same value of propensity score, but they possibly have different covaraite values X. Despite the different covaraite values, they were both equally likely to have been treated, which means that both subjects' X is just as likely to be found in the treatment. If you restrict to a subpopulation of subjects who have the same value of the propensity score, there should be balance in the two treatment groups.
+- P(X=x|π(X)=p, A=1) = P(X=x|π(X)=p, A=0)
+- 如果 we match on the propensity score, we should achieve balance
+  - considering we assumed ignorability - that treatment is randomized given X
+  - conditioning on the propensity score, is conditioning on an allocation probability
+  
+估算propensity score
+- randomized trial， 一般来说是知道的 P(A=1|X) = P（A=1）= 0.5
+- observational study, it'll be unkown, 需要估算
+  - 需要估算 P(A=1|X)， 可以用logistic regression, fit a model outcome A, covariates X, from the model get the predicted probability for each subject, that's estimated propensity score.
