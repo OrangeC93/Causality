@@ -79,8 +79,9 @@ randomization test 也叫 permutation tests, exact test, 主要思想：
 - 随机permute treatment assignment within pairs and 重新计算test statistic
 - 重复多次，观察how unusual observed statistic is
 
-
-举例
+举例（分类）
 ![Image](/pictures/mps_1.png)
 ![Image](/pictures/mps_2.png)
 ![Image](/pictures/mps_3.png)
+
+McNemar test（分类）: 以上描述的等于McNemar test，r包里面有个macnemar.test(matrix)，直接可以用
