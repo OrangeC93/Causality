@@ -49,3 +49,6 @@ Estimation in MSMs: 不能直接用regression estimation方法，因为有从fou
   - this accounts for fact that pseudo population might be larger than sample size
 
 ## Assessng balance
+Balance after weighting: covariate balance can be checked on the weighted sample using standarized difference: in a table or in a plot.
+
+Standardized differences after weighting: same idea, except on weighted means and weighted variances. 
