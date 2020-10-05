@@ -80,3 +80,11 @@ Investigative step with very large weights:
 - is there a problem with the propensity score model
 
 方法1： trimming the tails, removing treated subjects whose propensity scores are above the 98th and control subjects whose propensity scores are below the 2nd, reminder: trimming the tails changes the population
+
+方法2： weight truncation
+- step1: determin a max allowable weight
+  - could be a specific value
+  - could be based on a percentile
+- step2: if a weight is greater than the maximum allowable, set it to the maximum allowable value
+
+- Trucation leads to bias but smaller variance, no trucation leads to unbiased, larger variance, truncating extremely large weights can result in estimators with lower mean squared error
