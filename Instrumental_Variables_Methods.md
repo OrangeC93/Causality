@@ -64,4 +64,23 @@ Identifiability
 - Compliance classes are also known as principle strata, these are latent (not directly observable)
 
 ## Assumptions
+Assumptions about IVs if
+- It's associated with the treatment
+- It affects the outcome only throught its effect on treatment
+  - This is known as the **exclusion restriction** which means Z cannot directly, or indirectly through its effect on U, affect the outcome
 
+Identification challenge
+
+Monotonicity assumption: there's no defiers
+- No one consistently does the opposite of what they are told
+- It is called monotonicity because the assumption is that the probability of treatment should increase with more encouragement
+
+## Causual effect identification and estimation
+
+## IVs in observational studies
+
+## Two stage least squares
+
+## Weak instruments
+
+## R example
