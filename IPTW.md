@@ -61,3 +61,10 @@ If imbalance after weighting
 - Can then reassess balance
 
 ## Distribution of weights
+Why do weights matter: larger weights lead to noisier estimates of causal effects
+
+Further intuition: bootstrapping
+- randomly sample, with replacement, from the original sample
+- estimate parameters
+- repeat steps 1 and 2 many times
+- the standard deviation of bootsrap estimates is an estimate of standard error
