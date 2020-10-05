@@ -51,3 +51,4 @@ Causal effect: a motivation for using IV methods in general is concern about pos
 
 Local average treatment effect
 ![image](/pictures/local_average_treatment_effect.png)
+- This is causal bacause it contrasts counterfact
