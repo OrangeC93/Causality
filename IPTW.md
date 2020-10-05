@@ -96,5 +96,9 @@ IPTW estimation:
 Regression based:
 ![image](/pictures/regression_based.png)
 
-Doubly robust estimators: is an estimator that is unbiased if either the propensity score model or the outcome regression model are correctly specified
+Doubly robust estimators(augmented IPTW estimarots): is an estimator that is unbiased if either the propensity score model or the outcome regression model are correctly specified
 ![image](/pictures/doubly_robust_estimator.png)
+- In general, AIPTW estimators should be more efficient than regular IPTW estimators
+
+## Example in R
+- ipw and sandwich (robust variance estimator)
