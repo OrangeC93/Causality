@@ -60,5 +60,8 @@ Local average treatment effect
 Observed data
 ![image](/pictures/observed_treatment_effect.png)
 
+Identifiability
+- Compliance classes are also known as principle strata, these are latent (not directly observable)
+
 ## Assumptions
 
