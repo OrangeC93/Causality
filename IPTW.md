@@ -88,3 +88,5 @@ Investigative step with very large weights:
 - step2: if a weight is greater than the maximum allowable, set it to the maximum allowable value
 
 - Trucation leads to bias but smaller variance, no trucation leads to unbiased, larger variance, truncating extremely large weights can result in estimators with lower mean squared error
+
+## Doubly robust estimators
