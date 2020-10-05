@@ -40,10 +40,10 @@ Causal effect of assignment on receipt
 ## Compliance classes
 Potential values of treatment: we can  classify people based on potential treatment
 ![image](/pictures/potential_treatment.png)
-- Never takers: we would not learn anything about the effect of teatment of this subpopulation, as there' s no variation in treatment received.
-- Compliers: take treatment when encouraged to, and do not otherwise, in this group, treatment received is randomized.
-- Defiers: in this group treatment received is also randomzed, but in the opposite way.
-- Always takers: in this group there's no variation in treatment received, no information about causal effect.
+- Never takers(从来不做): we would not learn anything about the effect of teatment of this subpopulation, as there' s no variation in treatment received.
+- Compliers(让你做啥你做啥): take treatment when encouraged to, and do not otherwise, in this group, treatment received is randomized.
+- Defiers(让你做啥你反着来): in this group treatment received is also randomzed, but in the opposite way.
+- Always takers(啥都做): in this group there's no variation in treatment received, no information about causal effect.
 
 Causal effect: a motivation for using IV methods in general is concern about possible unmeasured confounding
 - If there's unmeasured confounding, cannot marginalize over all confounders (via matching, IPTW, ect)
@@ -51,4 +51,14 @@ Causal effect: a motivation for using IV methods in general is concern about pos
 
 Local average treatment effect
 ![image](/pictures/local_average_treatment_effect.png)
-- This is causal bacause it contrasts counterfact
+- This is causal bacause it contrasts counterfactuals in a common population
+- Know as complier average causual effect (CACE)
+  - This is a causal effect in subpopulation
+  - A local causal effect
+  - No inference about defiers, always takers, or never takers
+
+Observed data
+![image](/pictures/observed_treatment_effect.png)
+
+## Assumptions
+
