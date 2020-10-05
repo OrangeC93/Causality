@@ -63,10 +63,20 @@ If imbalance after weighting
 ## Distribution of weights
 Why do weights matter: larger weights lead to noisier estimates of causal effects, an extremely large weight means that the probability of that treatment was very small, thus large weights indicate near violation of the positivity assumption
 
+Checking weights: 
+- plot weight vs density or index vs sort(weight)
+- summary statistics of weights
+
 Further intuition: bootstrapping
 - randomly sample, with replacement, from the original sample
 - estimate parameters
 - repeat steps 1 and 2 many times
-
-Checking weights: plot weight vs density or index vs sort(weight)
 - the standard deviation of bootsrap estimates is an estimate of standard error
+
+## Remedies for large weights
+Investigative step with very large weights:
+- what's unusual about them?
+- is there a problem with their data
+- is there a problem with the propensity score model
+
+方法1： trimming the tails, removing treated subjects whose propensity scores are above the 98th and control subjects whose propensity scores are below the 2nd, reminder: trimming the tails changes the population
