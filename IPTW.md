@@ -93,5 +93,8 @@ Investigative step with very large weights:
 IPTW estimation:
 ![image](/pictures/iptw_estimation.png)
 
-Regression based
+Regression based:
 ![image](/pictures/regression_based.png)
+
+Doubly robust estimators: is an estimator that is unbiased if either the propensity score model or the outcome regression model are correctly specified
+![image](/pictures/doubly_robust_estimator.png)
