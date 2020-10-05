@@ -40,3 +40,14 @@ Causal effect of assignment on receipt
 ## Compliance classes
 Potential values of treatment: we can  classify people based on potential treatment
 ![image](/pictures/potential_treatment.png)
+- Never takers: we would not learn anything about the effect of teatment of this subpopulation, as there' s no variation in treatment received.
+- Compliers: take treatment when encouraged to, and do not otherwise, in this group, treatment received is randomized.
+- Defiers: in this group treatment received is also randomzed, but in the opposite way.
+- Always takers: in this group there's no variation in treatment received, no information about causal effect.
+
+Causal effect: a motivation for using IV methods in general is concern about possible unmeasured confounding
+- If there's unmeasured confounding, cannot marginalize over all confounders (via matching, IPTW, ect)
+- IV methods do not focus on the average causal effect for the population, they focus on a **local average treatment effect**
+
+Local average treatment effect
+![image](/pictures/local_average_treatment_effect.png)
