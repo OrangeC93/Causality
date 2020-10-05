@@ -61,10 +61,12 @@ If imbalance after weighting
 - Can then reassess balance
 
 ## Distribution of weights
-Why do weights matter: larger weights lead to noisier estimates of causal effects
+Why do weights matter: larger weights lead to noisier estimates of causal effects, an extremely large weight means that the probability of that treatment was very small, thus large weights indicate near violation of the positivity assumption
 
 Further intuition: bootstrapping
 - randomly sample, with replacement, from the original sample
 - estimate parameters
 - repeat steps 1 and 2 many times
+
+Checking weights: plot weight vs density or index vs sort(weight)
 - the standard deviation of bootsrap estimates is an estimate of standard error
