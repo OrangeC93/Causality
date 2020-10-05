@@ -90,3 +90,8 @@ Investigative step with very large weights:
 - Trucation leads to bias but smaller variance, no trucation leads to unbiased, larger variance, truncating extremely large weights can result in estimators with lower mean squared error
 
 ## Doubly robust estimators
+IPTW estimation:
+![image](/pictures/iptw_estimation.png)
+
+Regression based
+![image](/pictures/regression_based.png)
