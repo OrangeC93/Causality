@@ -103,9 +103,26 @@ Goal: estimate E(Ya=1 - Ya=0|compliers)
 ![image](/pictures/整理后公式3.png)
 
 最终公式：
+![image](/pictures/最终公式.png)
 
+总结
+- IV require 2 key assumptions, the strongest of which is the exclusion restriction
+- If one also makes the monotonicity assumption, then the complier average causal effect is identified
+  - An estimator of it is just the standard ITT effect estimate divided by an estimate of the proportion of compliers
+  - The ITT effect will in general be an under estimate of the CACE
 ## IVs in observational studies
+如何发现IV:(1) It affects treatment can be checked with data（2）The validity of the exclusion restricion assumption will largely need to rely on subject matter knowledge
 
+Example1: calendar time as IV
+![image](/pictures/IV_eg1.png)
+- It is associated with treatment received (sulfonylureas popular early, metformin popular late
+- Exclusion restriction: calendar time could be associated with the outcome if other treatment practices or patient behavior changed during that time
+
+Example2: distance as iv
+![image](/pictures/Iv_eg2.png)
+
+Other examples:
+![image](/pictures/IV_egs.png)
 ## Two stage least squares
 
 ## Weak instruments
