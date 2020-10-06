@@ -129,6 +129,31 @@ Two stage least squares is a method for estimating a causal effect in the instru
 ![image](/pictures/stage1.png)
 - Stage 2
 ![image](/pictures/stage2.png)
+
+What is the interpretation of beta1: beta1 = E(Y|A=1) - (Y|A=0) = CACE
+
+2SLS more generally:
+- 2SLS can also be used with covariates and for non-binary data 
+  - Stage1: regress A on Z and covariates X, then obtained the fitted value of A
+  - Stage2: regress Y on the fitted value of A and X, coefficient of the fitted value of A is the causal effect
+
+Sensitivity analysis:
+- exclusion restriction: if Z does directly affect Y by an amount p, would my conclusion change? Vary p
+- Monotonicity: if the proportion of defiers was π, would my conclusions change
+
 ## Weak instruments
+Strength of IVs:
+- Estimate the proportion of compliers E(A|Z=1) - E(A|Z=0), given Z you received treatment minus not given Z but you received treatment, which can be identifed from observed data
+
+If 1% of the population are compliers, which leads to very leage varaince estimates, the estimate of causal effect unstable.
+
+方法
+1. produce confidence intervals that are too wide to be useful
+2. 加强 IV (也叫near far matching方法), match so that covariates are similar, but the instrument is very different 
 
 ## R example
+Background of example:
+![image](/pictures/eg_background.png)
+Study motivation
+![image](/pictures/study_motivation.png)
+
