@@ -127,6 +127,8 @@ Other examples:
 Two stage least squares is a method for estimating a causal effect in the instrumental variables setting
 - Stage 1
 ![image](/pictures/stage1.png)
+- Stage 2
+![image](/pictures/stage2.png)
 ## Weak instruments
 
 ## R example
