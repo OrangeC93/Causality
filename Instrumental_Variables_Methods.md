@@ -71,11 +71,14 @@ Assumptions about IVs if
 
 Identification challenge
 
-Monotonicity assumption: there's no defiers
+**Monotonicity assumption: there's no defiers**
 - No one consistently does the opposite of what they are told
 - It is called monotonicity because the assumption is that the probability of treatment should increase with more encouragement
 
-## Causual effect identification and estimation
+![image](/pictures/monotonicity.png)
+Now we will have enough data for causal effect estimation
+
+## Causal effect identification and estimation
 
 ## IVs in observational studies
 
