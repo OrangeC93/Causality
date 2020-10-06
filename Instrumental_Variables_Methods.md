@@ -124,7 +124,9 @@ Example2: distance as iv
 Other examples:
 ![image](/pictures/IV_egs.png)
 ## Two stage least squares
-
+Two stage least squares is a method for estimating a causal effect in the instrumental variables setting
+- Stage 1
+![image](/pictures/stage1.png)
 ## Weak instruments
 
 ## R example
