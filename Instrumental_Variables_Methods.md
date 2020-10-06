@@ -79,7 +79,25 @@ Identification challenge
 Now we will have enough data for causal effect estimation
 
 ## Causal effect identification and estimation
+Goal: estimate E(Ya=1 - Ya=0|compliers)
 
+首先：let's begin with something we can identify, IIT effect
+- E(Yz=1 - Yz=0) = E(Y|Z=1) - E(Y|Z=0)
+
+![image](/pictures/y_z_1.png)
+- Expected value of Y among people assigned treatment is a weighted average of the expected value of Y given Z=1 in the 3 subpopulation
+- Note: among always takers and never takers, Z does nothing
+  - E(Y|Z=1, always takers) = E(Y|always takers)
+  - E(Y|Z=1, never takers) = E(Y|never takers)
+
+整理后：
+![image](/pictures/整理公式.png)
+
+相减后：
+![image](/pictures/整理后公式.png)
+
+再次整理后：
+![image](/pictures整理后公式2.png)
 ## IVs in observational studies
 
 ## Two stage least squares
