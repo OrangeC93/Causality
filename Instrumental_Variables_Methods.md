@@ -97,7 +97,7 @@ Goal: estimate E(Ya=1 - Ya=0|compliers)
 ![image](/pictures/整理后公式.png)
 
 再次整理后：
-![image](/pictures整理后公式2.png)
+![image](/pictures/整理后公式2.png)
 ## IVs in observational studies
 
 ## Two stage least squares
