@@ -120,7 +120,7 @@ Hidden bias: R packages sensitivity22k
   - 如果this happens when 系数=5， 说明 not very sensitive to unmeasured confounding (hidden bias)
 
 ## Propensity score
-Propensity score: the probability of receiving treatment rather than control, given covariates X. Define A=1 for treatment and A=0 for control, denote the rppensity score for subject i by πi, πi=P(A=1|Xi).
+Propensity score: the probability of receiving treatment rather than control, given covariates X. Define A=1 for treatment and A=0 for control, denote the proppensity score for subject i by πi, πi=P(A=1|Xi).
 
 比如：age was the only X variable and older people were more likely to get treatment. Then the propensity score would be larger for older ages P(A=1|age=60) > P(A=1|age=30), if person i has a propensity score value of 0.3, that means that, given their particular covariate values, there's a 30% chance they will be treated.
 
@@ -132,8 +132,9 @@ Balancing score: there're 2 subjects have the same value of propensity score, bu
   
 估算propensity score
 - randomized trial， 一般来说是知道的 P(A=1|X) = P（A=1）= 0.5
-- observational study, it'll be unkown, 需要估算
-  - 需要估算 P(A=1|X)， 可以用logistic regression, fit a model outcome A（因变量, treatment A=0 或者A=1）, covariates X（自变量s）, from the model get the predicted probability for each subject, that's estimated propensity score.
+- observational study, it'll be unkown, 需要估算需要估算 P(A=1|X)
+  - 可以用logistic regression, fit a model where outcome A（因变量, treatment A=0 或者A=1）, covariates X（自变量s）
+  - get the predicted probability for each subject(fitted value), that's estimated propensity score.
 
 ## Propensity score matching
 Overlap: plot the propensity score distribution for treated and control group
