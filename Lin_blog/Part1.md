@@ -16,3 +16,7 @@ blog Yishi Lin：https://dango.rocks/categories/%E5%9B%A0%E6%9E%9C%E6%8E%A8%E6%9
 两种效应：
 - ATE 平均因果效应 ATE = E(Y1- Y2)
 - ATT 干预组平均因果效应 ATE = E(Y1- EY2|T=1)
+
+四大假设: SUTVA, Ignorability, consistency, positivity
+
+基本方式：Matching, Propensity Score matching, iptw, iv等
