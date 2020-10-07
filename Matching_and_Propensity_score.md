@@ -9,19 +9,19 @@ Why not always randomize:
 - 需要一段时间出结果（但是往往已经无效了）
 
 观察实验：
-- 计划的 prospective, observational studies with active data collection
+- 计划 prospective, observational studies with active data collection
 - 已有数据 retrospective, passive data collection 
 
 观察的时候，the distribution of X will differ between treatment groups
 
-Matching方法: 可以将观察实验变成more randomized实验，主要思想就是match individuals in the treated group A=1 to individuals in the control group A=0 on the covariates X
+Matching方法： 可以将观察实验变成more randomized实验，主要思想就是match individuals in the treated group A=1 to individuals in the control group A=0 on the covariates X
 
 Matching好处：（1）在设计实验的步骤就控制住confounders，因此不用手动修改outcome（2）可以保证positivity assumption（3）outcome计算也变得很简单（4）matching之后就可以认为是个随机实验
 
 ## Overview of Matching
-Single covariate: 很简单
+Single covariate: easy
 
-Multiple covariates：很难 match on full set of covariates. 在一个随机实验中，treated和control subject are not perfect matches either, the distribution of covariates is balanced between groups 叫做 stochastic balance，matching **closely** on covariates can achieve stochastic balance
+Multiple covariates：hard to match on full set of covariates. 在一个随机实验中，treated和control subject are not perfect matches either, the distribution of covariates is balanced between groups 叫做 stochastic balance，matching **closely** on covariates can achieve stochastic balance
 
 目标人群：注意到我们 making the distribution of covariates in the control population(对照组) look like that in the treated population（实验组）, 因此，you're estimating causal effect of treatment (实验组) on the treated
 
@@ -34,10 +34,14 @@ Number of matches:
 
 ## Matching directly on confounders
 如何match： some metric of closeness (1) Mahalanobis distance 马哈拉诺比斯 (2) robust Mahalanobis distance
+- Mahalanobis distance: 可以认为是square root of the sum of squared distances between each covariate scaled by the covariance matrix
+![Image](/pictures/mahalanobis_distance.png)
 
-Mahalanobis distance: 可以认为是square root of the sum of squared distances between each covariate scaled by the covariance matrx, 
-
-Robust Mahalanobis distance: Mahalanobis distance可能会受到outliers影响, 但是ranks might be more relevant, eg highest and 2nd highest ranked values of covariates perhaps should be treated as similar, even if the values are far apart.
+![Image](/pictures/mahalanobis_distance_eg.png)
+- Robust Mahalanobis distance: 因为mahalanobis distance可能会受到outliers影响（large distance）, 但是ranks might be more relevant, eg highest and 2nd highest ranked values of covariates perhaps should be treated as similar, even if the values are far apart.
+  - replace each covariates values with its rank
+  - constant diagonal on covariance matrix
+  - calculate the ususal Mahalanobis distance on the ranks
 
 ## Greedy(nearest-neighbor) matching 
 步骤:
