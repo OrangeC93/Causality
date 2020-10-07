@@ -9,8 +9,8 @@
   - 实验组: 接不接种流感疫苗 A=1 接种 A=0 没有接种
   - 结果: 人得流感的时间
 - 潜在结果（在treatment decision还没定下来前）: what we would see under each possible treatment option
-  - Y1: 接种疫苗下，多长时间人会得流感
-  - Y0: 没有接种疫苗下，多长时间人会得流感
+  - Y1: 接种疫苗下A1，多长时间人会得流感
+  - Y0: 没有接种疫苗下A0，多长时间人会得流感
 - 反设事实（在treatment decision定下来后）：如果实验组是A=1，那么反设事实就是Y0，如果实验组是A=0, 那么反设事实就是Y1
 
 ## 假设干预
@@ -21,12 +21,13 @@
 
 什么是因果影响：there's a only causal effect if Y1 != Y0, 也就是说既需要知道Y1也需要知道Y0，并且两个不”相等“
 
-## 因果关系
-- Average Causal Effect: E(Y1-Y0) average value of Y if everyone was treated with A1 minus average value of Y if everyone was treated with A=0
-  - 例子 regional A=1 vs genral A=0 anesthesia for hip fracture surgery on risk of major pulmonary complications
-  - 假设 E（Y1-Y0） = -0.1 代表 the probability of major pulmonary complications is lower by 0.1 if given regional anesthesia compared with general anesthesia
+## 因果结果
+- Average Causal Effect 平均因果影响: E(Y1-Y0) 
+  - Average value of Y if everyone was treated with A1 minus average value of Y if everyone was treated with A=0
+  - 例子 regional A=1 vs general A=0 anesthesia for hip fracture surgery on risk of major pulmonary complications
+  - 解释： 假设 E（Y1-Y0） = -0.1 代表 the probability of major pulmonary complications is lower by 0.1 if given regional anesthesia compared with general anesthesia
 
-- Conditioning vs Setting: E（Y1-Y0）！= E（Y|A=1）- E（Y|A=0）原因是 expected value of Y given A=1 限制了subpopulation of people who had A=1 actually, 而他们可能跟whol额population 不同
+- Conditioning vs Setting: E（Y1-Y0）！= E（Y|A=1）- E（Y|A=0）原因是 expected value of Y given A=1 限制了subpopulation of people who had A=1 actually, 而他们可能跟whole population 不同
   - E（Y|A=1）means of Y among people with A=1
   - E（Y1) means of Y if the whole population was treated with A=1
 
@@ -35,7 +36,7 @@
   - E（Y1-Y0|A=1）: causal effect of treatment on the treated
   - E（Y1-Y0|V=v）:average causal effect in the subpopulation with covariate V=v
 
-## 因果关系假设 AB TEST 满足以下所有假设
+## 因果关系假设 （AB TEST 满足以下所有假设）
 - SUTVA(stable unit treatment value assumption): 
   - no interference 用户相互独立无干扰
   - one version of treatment 个体潜在结果和最终观察结果只跟自己有关
@@ -48,9 +49,12 @@
 Standardization: involves stratifying and then averaging
 - obtain a treatment effect within each stratum and then across stratum, weighting by the probability (size) of each stratum
 
-举例：对比两种糖尿病的治疗方法：沙格列汀和西他列汀，结果是MACE(主要不良心脏事件)，问题是沙格列汀用户在过去更可能会吃一些OAD的药，而这种药会有更高的MACE风险
+举例：对比两种糖尿病的治疗方法(treatment)：沙格列汀和西他列汀，outcome是MACE(主要不良心脏事件)，问题是沙格列汀用户在过去更可能会吃一些OAD的药(covariates)，而这种药会有更高的MACE风险
 
-解决方案：计算沙格列汀和西他列汀用户的MACE rate in两类subpopulations：用户过去有用过OAD，用户过去没有用过OAD，然后计算加权均值（根据proportion of people in subpopulation），如果在以前OAD使用变量中，treatment can be thought of as randomized，这就是因果影响
+解决方案：
+- 在两类subpopulations：用户过去有用过OAD，用户过去没有用过OAD 计算沙格列汀和西他列汀用户的MACE
+- 然后计算加权均值（根据proportion of people in subpopulation），如果在以前OAD使用变量中，treatment can be thought of as randomized，这就是因果影响
+![Image](/pictures/stratification1.png)![Image](/pictures/stratification2.png)
 
 问题：这可能会有many X varaibles needed to achieve ignorability，或者导致很多空值
 
