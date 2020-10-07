@@ -1,4 +1,4 @@
-## 因果关系的种种小迷惑
+## 假因果关系
 - 假的相关性：在一段时间内，有些变量会产生看似高度相关的走向，这是所谓的causally unrelated. 比如：缅因州的离婚率和人工黄油使用率。
 - 传说：比如Bill Smith活到了105岁，他说他的秘诀是每天吃个turnip，这个只能说明两者同时发生，但是并不能说明吃turnip能让他长寿也不代表其他人这样做也会长寿。
 - 科学报道：新闻总是引导性的用因果相关词，但是却没有任何依据，比如：positive link between video games and academic performance, study suggests.
@@ -35,11 +35,14 @@
   - E（Y1-Y0|A=1）: causal effect of treatment on the treated
   - E（Y1-Y0|V=v）:average causal effect in the subpopulation with covariate V=v
 
-## 因果关系假设
-- SUTVA: (1) no interference （2）one version of treatment
-- Consistency assumption：the potential outcome under treatment A=a, Ya is equal to the observed outcome if the actual treatment received is A=a
-- Ignorability assumption：given pre treatment covariates X, treatment assignment is independent from the potential outcomes, Y0,Y1 || A|X
-- Positivity assumption: for every set of values for X, treatment asignment was not determinitstic
+## 因果关系假设 AB TEST 满足以下所有假设
+- SUTVA(stable unit treatment value assumption): 
+  - no interference 用户相互独立无干扰
+  - one version of treatment 个体潜在结果和最终观察结果只跟自己有关
+  - 具有社交属性的实验，很难完全保证SUTVA
+- Consistency assumption：the potential outcome under treatment A=a, Ya is equal to the observed outcome if the actual treatment received is A=a 也就是假设潜在结果和观察到的结果是一致的
+- Ignorability assumption：given pre treatment covariates X, treatment assignment is independent from the potential outcomes(是否treated和potential outcom是相互独立的), 也就是Y0,Y1 独立 A|X
+- Positivity assumption: for every set of values for X, treatment asignment was not determinitstic，也就是treatment assignment是随机的，如果不成立的话，可以适当移除特殊用户群
 
 ## 分层
 Standardization: involves stratifying and then averaging
