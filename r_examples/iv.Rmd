@@ -66,3 +66,11 @@ ivmodel=ivreg(lwage~educ12, ~ nearc4, x=TRUE, data=card.data)
 robust.se(ivmodel)
 ```
 
+Controlling for covariates
+```{r}
+ivmodel=ivreg(lwage~educ12+exper+reg661+reg662+reg663+reg664+reg665+reg666+reg667+reg668, 
+              ~ nearc4+exper+reg661+reg662+reg663+reg664+reg665+reg666+reg667+reg668, 
+              x=TRUE, data=card.data)
+robust.se(ivmodel)
+```
+
