@@ -45,11 +45,11 @@ Number of matches:
 
 ## Greedy(nearest-neighbor) matching 
 步骤:
-1. randomly order list of treated subjects and control subjects
-2. start with the first treated subject. Match to the control with the smallest distance (this is greedy)
-3. remove the matched control from the list of available matches
-4. move on to the next treated subject. Match to the control with the smallest distance.
-5. repeat step 3 and 4 until you have matched all treated subjects
+1. Randomly order list of treated subjects and control subjects
+2. Start with the first treated subject. Match to the control with the smallest distance (this is greedy)
+3. Remove the matched control from the list of available matches
+4. Move on to the next treated subject. Match to the control with the smallest distance.
+5. Repeat step 3 and 4 until you have matched all treated subjects
 
 好处：（1）直接，简单，容易解释，很快
 
@@ -65,8 +65,7 @@ Sparse optimal matching: 加一些constraints which can be imposed to make optim
 
 ## Accessing balance
 Did matching work? 
-- hypothesis test: test for a difference in means between treated and controls for each covariate, 2 sample t-test, calculate p value. 但是，p value 和sample size有关系，如果sample size很大，容易导致small difference也容易导致small p value
-
+- 假设检验: test for a difference in means between treated and controls for each covariate, 2 sample t-test, calculate p value. 但是，p value 和sample size有关系，如果sample size很大，容易导致small difference也容易导致small p value
 - Standardized differene: the difference in means between groups, divided by the pooled standard deviation.
   - smd = (Xt-Xc)/sqrt((St^2+Sc^2)/2)
   - 好处：不依赖sample size
@@ -75,7 +74,7 @@ Did matching work?
 举例
 ![Image](/pictures/smd_eg.png)
 
-## Analyzign data after matching
+## Analyzing data after matching
 
 randomization test 也叫 permutation tests, exact test, 主要思想：
 - 计算test statistic from observed data
@@ -96,13 +95,23 @@ randomization test 也叫 permutation tests, exact test, 主要思想：
 
 ## Sensitivity analysis
 Possible hidden bias: 
-- overt bias: there was imbalanced on observed covariates
-- hidden bias: 可能会遗落一些 unobserved confounders
+- overt bias: there was imbalanced on observed covariates, we didn't fully control for these variables
+- hidden bias: 可能会遗落一些 unobserved confounders, ignorability assumption violated
+
+Sensitivity analysis: 
+- 主要思想：if there're hidden bias, determine how severe it would have to be to change conclusions.
 
 Hidden bias: R packages sensitivity22k
-- πj和πk是probability that person j receives treatment, 假设jkmatched，那么πj和πk应该相等，there‘s no hidden bias
+- πj和πk是probability that person j,k receives treatment, 假设j,k matched，so that their observed covariates Xj and Xk, are the same
+- 如果πj和πk相等，there‘s no hidden bias
+
 ![Image](/pictures/sensitivity_analysis.png)
-- 假设 we have evidence of a treatment effect，也就是系数=1，没有hidden bias
+- if 系数 =1， no overt bias
+- if 系数>1, hidden bias
+
+假设 we have evidence of a treatment effect
+- This is under the assumption that 系数=1
+  - 
 - 提高系数 until evidence of treatment effect goes away(no longer statistically significant)
   - 如果this happens when 系数=1.11， 说明very sensitive to unmeasured confounding (hidden bias)
   - 如果this happens when 系数=5， 说明 not very sensitive to unmeasured confounding (hidden bias)
