@@ -90,7 +90,10 @@ randomization test 也叫 permutation tests, exact test, 主要思想：
 工具包：
 - McNemar test（分类）: 以上描述的等于McNemar test，r包里面有个macnemar.test(matrix)，直接可以用
 - ttest（continious data）
-- logistic regression, stratified cox model, generalized estimating equations
+- 其他
+  - conditional logistic regression: matched binary outcome data
+  - stratified cox model: time-to-event(survival) outcome data, baseline hazard stratified on matched sets
+  - generalized estimating equations
 
 
 ## Sensitivity analysis
@@ -111,7 +114,7 @@ Hidden bias: R packages sensitivity22k
 
 假设 we have evidence of a treatment effect
 - This is under the assumption that 系数=1
-  - 
+  - assume no hidden bias
 - 提高系数 until evidence of treatment effect goes away(no longer statistically significant)
   - 如果this happens when 系数=1.11， 说明very sensitive to unmeasured confounding (hidden bias)
   - 如果this happens when 系数=5， 说明 not very sensitive to unmeasured confounding (hidden bias)
