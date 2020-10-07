@@ -1,0 +1,172 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+Data example: Right heart catheterization(心脏导管) data 
+
+ICU patients in 5 hospitals
+- Treatment: right heart catheterization vs not
+- Outcome: death (yes/no)
+- Confounders: demographics, insurance, disease diagnoses, etc
+- 218 treated and 3551 controls
+
+
+```{r}
+library(tableone)
+library(sandwich) # for robust variance estimation
+library(ipw)
+library(survey) # analysis of complex survey samples
+```
+```{r}
+# read in data
+load(url("http://biostat.mc.vanderbilt.edu/wiki/pub/Main/DataSets/rhc.sav"))
+```
+
+```{r}
+head(rhc)
+```
+
+```{r}
+# only variables that will be used, convert character to numeric
+ARF<-as.numeric(rhc$cat1=='ARF')# 急性呼吸衰竭
+CHF<-as.numeric(rhc$cat1=='CHF') # 充血性心力衰竭
+Cirr<-as.numeric(rhc$cat1=='Cirrhosis')# 肝硬化
+colcan<-as.numeric(rhc$cat1=='Colon Cancer')# 结肠癌
+Coma<-as.numeric(rhc$cat1=='Coma')# 昏迷
+COPD<-as.numeric(rhc$cat1=='COPD')# 慢性阻塞性肺病
+lungcan<-as.numeric(rhc$cat1=='Lung Cancer')# 肺癌
+MOSF<-as.numeric(rhc$cat1=='MOSF w/Malignancy')# 恶性（肿瘤等）
+sepsis<-as.numeric(rhc$cat1=='MOSF w/Sepsis')# 败血症
+female<-as.numeric(rhc$sex=='Female')
+died<-as.numeric(rhc$death=='Yes')
+age<-rhc$age
+treatment<-as.numeric(rhc$swang1=='RHC')
+meanbp1<-rhc$meanbp1
+aps<-rhc$aps1
+```
+
+
+
+```{r}
+# new dataset
+mydata<-cbind(ARF, CHF, Cirr, colcan, Coma, lungcan, MOSF, 
+              sepsis, age, female, meanbp1, treatment, died, aps)
+mydata<-data.frame(mydata)
+```
+
+
+```{r}
+# propensity score model
+psmodel<-glm(treatment~age+female+meanbp1+ARF+CHF+Cirr+colcan+Coma+lungcan+MOSF+sepsis, family=binomial(link="logit"))
+
+xvars<-c("ARF", "CHF", "Cirr", "colcan", "Coma", 
+         "lungcan", "MOSF", "sepsis", "age", "female", "meanbp1")
+
+# value of propensity score for each subject
+ps<-predict(psmodel, type="response")
+```
+
+Create weights and check balance
+```{r}
+# create weights
+weight<-ifelse(treatment==1, 1/(ps), 1/(1-ps))
+
+# apply weights to data
+weighteddata<-svydesign(ids=~1, data = mydata, weights=~weight)
+
+# weighted table 1
+weightedtable<-svyCreateTableOne(vars = xvars, strata = "treatment",
+                                 data = weighteddata, test = FALSE)
+# show table with SMD
+print(weightedtable, smd=TRUE)
+```
+
+Get a weighted mean directly
+```{r}
+mean(weight[treatment==1]*age[treatment==1])/(mean(weight[treatment==1]))
+```
+
+MSMs
+```{r}
+# get causal relative risk. Weighted GLM
+glm.obj<-glm(died~treatment, weights=weight, 
+             family=binomial(link="log"))
+betaiptw<-coef(glm.obj)
+# to properly account for weighting, use asymptotic (sandwich) variance
+SE<-sqrt(diag(vcovHC(glm.obj, type="HC0")))
+# get point estimate and CI for relative risk
+causalrr<-exp(betaiptw[2])
+lcl<-exp(betaiptw[2]-1.96*SE[2])
+ucl<-exp(betaiptw[2]+1.96*SE[2])
+c(lcl, causalrr,ucl)
+```
+
+
+
+
+Using R packages IPW
+```{r}
+weightmodel<-ipwpoint(exposure=treatment, family="binomial",
+                      link="logit", denominator=~age+female+meanbp1+ARF+CHF+Cirr+colcan+Coma+lungcan+MOSF+sepsis, data=mydata)
+
+
+summary(weightmodel$ipw.weights)
+ipwplot(weights = weightmodel$ipw.weights, logscale = FALSE, 
+        main = "weights", xlim = c(0,22))
+```
+
+```{r}
+```
+
+
+```{r}
+# fit a marginal structural model (risk difference)
+msm<-(svyglm(died~treatment, design=svydesign(~ 1, weights = ~weight, data=mydata)))
+
+coef(msm)
+
+confint(msm)
+```
+
+
+
+Truncated weights
+
+```{r}
+# 方法1
+# truncated weights
+truncweight<-replace(weight, weight>10, 10)
+
+glm.obj<-glm(died~treatment, weights=truncweight, 
+             family=binomial(link="log"))
+betaiptw<-coef(glm.obj)
+# to properly account for weighting, use asymptotic (sandwich) variance
+SE<-sqrt(diag(vcovHC(glm.obj, type="HC0")))
+# get point estimate and CI for relative risk
+causalrr<-exp(betaiptw[2])
+lcl<-exp(betaiptw[2]-1.96*SE[2])
+ucl<-exp(betaiptw[2]+1.96*SE[2])
+c(lcl, causalrr,ucl)
+```
+
+```{r}
+# 方法2
+# Truncated weights with library
+weightmodel<-ipwpoint(exposure=treatment, family="binomial",
+                      link="logit", denominator=~age+female+meanbp1+ARF+CHF+Cirr+colcan+Coma+lungcan+MOSF+sepsis, data=mydata,
+                      trunc=.01)
+
+
+summary(weightmodel$weights.trun)
+ipwplot(weights = weightmodel$weights.trun, logscale = FALSE, 
+        main = "weights", xlim = c(0,22))
+```
+
+```{r}
+# fit a marginal structural model (risk difference)
+msm<-(svyglm(died~treatment, design=svydesign(~ 1, weights = ~weightmodel$weights.trun, data=mydata)))
+
+coef(msm)
+
+confint(msm)
+```

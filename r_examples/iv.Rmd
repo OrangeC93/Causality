@@ -1,0 +1,68 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+Data example
+
+Using geographic variation in college proximity to estimate the return to schooling
+
+- Z: indicator that the subject grew up near a 4 year college
+- A: subject's year of education
+- Y: subject's income
+- X: covariates such as paraents years of education, region of country, age, race, IQ score from a test in HS, etc
+
+```{r}
+library(ivpack)
+```
+
+```{r}
+data(card.data)
+
+# iv nearc4
+# outcome lwage (log of wage)
+# treatment educ
+
+mean(card.data$nearc4)
+par(mfrow=c(1,2))
+hist(card.data$lwage)
+hist(card.data$educ)
+```
+
+```{r}
+```
+
+
+```{r}
+# make education binary
+educ12<-card.data$educ>12
+
+# estimate proportion of 'compliers'
+propcomp = mean(educ12[card.data$nearc4==1])-mean(educ12[card.data$nearc4==0])
+
+# itention to treat effect
+itt<-mean(card.data$lwage[card.data$nearc4==1])-
+  mean(card.data$lwage[card.data$nearc4==0])
+
+# complier average causal effect
+itt/propcomp
+```
+
+
+2SLS two stage least squares
+```{r}
+# stage1: regress A on Z
+s1<-lm(educ12~card.data$nearc4)
+## get predicted value of A given Z for each subject
+predtx<-predict(s1, type="response")
+table(predtx)
+
+# stage2: regress y on predicted value of a
+lm(card.data$lwage~predtx)
+```
+
+2SLS in ivpack
+```{r}
+ivmodel=ivreg(lwage~educ12, ~ nearc4, x=TRUE, data=card.data)
+robust.se(ivmodel)
+```
+

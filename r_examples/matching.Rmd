@@ -14,6 +14,7 @@ ICU patients in 5 hospitals
 library(tableone)
 library(Matching)
 ```
+
 ```{r}
 # read in data
 load(url("http://biostat.mc.vanderbilt.edu/wiki/pub/Main/DataSets/rhc.sav"))
@@ -25,6 +26,8 @@ head(rhc)
 ```{r}
  str(rhc)
 ```
+
+
 ```{r}
 ARF<-as.numeric(rhc$cat1=='ARF')# 急性呼吸衰竭
 CHF<-as.numeric(rhc$cat1=='CHF') # 充血性心力衰竭
