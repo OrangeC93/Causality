@@ -120,7 +120,7 @@ Hidden bias: R packages sensitivity22k
   - 如果this happens when 系数=5， 说明 not very sensitive to unmeasured confounding (hidden bias)
 
 ## Propensity score
-Propensity score: the probability of receiving treatment rather than control, given covariates X. Define A=1 for treatment and A=0 for control, denote the proppensity score for subject i by πi, πi=P(A=1|Xi).
+Propensity score: the probability of receiving treatment rather than control, given covariates X. Define A=1 for treatment and A=0 for control, denote the proppensity score for subject i by πi, πi=P(A=1|Xi), 也就是给出协变量，treated的可能性
 
 比如：age was the only X variable and older people were more likely to get treatment. Then the propensity score would be larger for older ages P(A=1|age=60) > P(A=1|age=30), if person i has a propensity score value of 0.3, that means that, given their particular covariate values, there's a 30% chance they will be treated.
 
@@ -153,7 +153,7 @@ Matching:
   - Logit of the propensity score is unbounded, this transformation essentially stretches the distribution, while preserving ranks
   - Match on logit(π) rather than π
 
-Caliper: 有个容忍的max distance，实际上一般用0.2 * sd of logit of the propensity score(当计算完propensity score from 逻辑回归, 然后take logit transform of the propensity score, then calculate the sd of the ransformed variable, set the caliper to 0.2 times the value from sd), it commonly done in practice because it semms to work well, but it's somewhat arbitrary, small caliper-less bias, more varaince.
+Caliper: 有个容忍的max distance，实际上一般用0.2 * sd of logit of the propensity score(当计算完propensity score from 逻辑回归, 然后take logit transform of the propensity score, then calculate the sd of the ransformed variable, set the caliper to 0.2 times the value from sd), it commonly done in practice because it semms to work well, but it's somewhat arbitrary, small caliper less bias, more varaince.
 
 ## R example
 - MatchIt packages 直接按照distance 做 matching
