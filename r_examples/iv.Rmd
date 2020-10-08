@@ -29,17 +29,13 @@ hist(card.data$educ)
 ```
 
 ```{r}
-```
-
-
-```{r}
 # make education binary
 educ12<-card.data$educ>12
 
 # estimate proportion of 'compliers'
 propcomp = mean(educ12[card.data$nearc4==1])-mean(educ12[card.data$nearc4==0])
 
-# itention to treat effect
+# intention to treat effect
 itt<-mean(card.data$lwage[card.data$nearc4==1])-
   mean(card.data$lwage[card.data$nearc4==0])
 

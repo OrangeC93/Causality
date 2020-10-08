@@ -116,10 +116,6 @@ ipwplot(weights = weightmodel$ipw.weights, logscale = FALSE,
 ```
 
 ```{r}
-```
-
-
-```{r}
 # fit a marginal structural model (risk difference)
 msm<-(svyglm(died~treatment, design=svydesign(~ 1, weights = ~weight, data=mydata)))
 
