@@ -158,3 +158,6 @@ Caliper: 有个容忍的max distance，实际上一般用0.2 * sd of logit of th
 ## R example
 - MatchIt packages 直接按照distance 做 matching
 - Logistic then Match packages（或者加个caliper）, then paired t test
+
+接受培训和收入的因果关系
+https://dango.rocks/blog/2019/01/20/Causal-Inference-Introduction2-Propensity-Score-Matching/
