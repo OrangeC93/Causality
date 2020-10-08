@@ -16,9 +16,9 @@ Estimator:
 ![image](/pictures/estimator.png)
 
 ## Marginal structural models
-Marginal structural models: model for the mean of potenial outcomes
+Marginal structural models: model for the mean of potential outcomes
 - marginal: model that is not conditional on the confounders (population average)
-- structural: model for ppotential outcomes, **not observed outcomes**
+- structural: model for potential outcomes, **not observed outcomes**
 
 Linear MSM
 ![image](/pictures/linear_msm.png)
