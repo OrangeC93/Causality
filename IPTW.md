@@ -50,7 +50,9 @@ Estimation in MSMs: 不能直接用regression estimation方法，因为有confou
   - this accounts for fact that pseudo population might be larger than sample size
 
 ## Assessing balance
-Balance after weighting: covariate balance can be checked on the weighted sample using standarized difference: in a table or in a plot(Standardized differences after weighting: same idea, except on weighted means and weighted variances).
+Balance after weighting: 
+1. weighted sample using standarized difference(standardized differences after weighting: same idea, except on weighted means and weighted variances) 
+2. plot
 
 If imbalance after weighting
 - Can refine propensity score model
@@ -80,7 +82,7 @@ Investigative step with very large weights:
 方法1： trimming the tails, removing treated subjects whose propensity scores are above the 98th and control subjects whose propensity scores are below the 2nd, reminder: trimming the tails changes the population
 
 方法2： weight truncation
-- step1: determin a max allowable weight
+- step1: determine a max allowable weight
   - could be a specific value
   - could be based on a percentile
 - step2: if a weight is greater than the maximum allowable, set it to the maximum allowable value
