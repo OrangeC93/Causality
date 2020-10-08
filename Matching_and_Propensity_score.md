@@ -65,6 +65,7 @@ Sparse optimal matching: 加一些constraints which can be imposed to make optim
 
 ## Accessing balance
 Did matching work? 
+- plot: 比较直观的是看倾向性得分在匹配前后的分布、以及特征在匹配前后的 QQ-Plot, MatchIt 自带了这些，两行代码搞定
 - 假设检验: test for a difference in means between treated and controls for each covariate, 2 sample t-test, calculate p value. 但是，p value 和sample size有关系，如果sample size很大，容易导致small difference也容易导致small p value
 - Standardized differene: the difference in means between groups, divided by the pooled standard deviation.
   - smd = (Xt-Xc)/sqrt((St^2+Sc^2)/2)
@@ -95,6 +96,11 @@ randomization test 也叫 permutation tests, exact test, 主要思想：
   - stratified cox model: time-to-event(survival) outcome data, baseline hazard stratified on matched sets
   - generalized estimating equations
 
+```
+https://dango.rocks/blog/2019/01/20/Causal-Inference-Introduction2-Propensity-Score-Matching/
+1.直接比较匹配后的实验组和对照组
+2.拟合一个由干预treatment和用户特征(covariates)预测观察结果的线形模型，看看干预 𝑇 的系数是多少
+```
 
 ## Sensitivity analysis
 Possible hidden bias: 
@@ -158,14 +164,23 @@ Trimming tails: if there's a lack of overlap, trimming the tails is an option, w
   - treated subjects whose propensity score is greater than the maximum in the control group
  - Trimming the tails makes the positivity assumption more reasonalbe, preventing extrapolation
 
+```
+https://dango.rocks/blog/2019/01/20/Causal-Inference-Introduction2-Propensity-Score-Matching/
+以先筛选掉倾向性得分比较 “极端” 的用户，例如在现实中不大可能出现在实验组里的对照组用户。常见的做法是保留得分在 [𝑒𝑚𝑖𝑛,𝑒𝑚𝑎𝑥] 这个区间的用户，关于区间选择:
+1. 实验组和对照组用户得分区间的交集
+2. 只保留区间中部 90% 或者 95%，如取原始得分在 [0.05,0.95] 的用户
+```
+
 Matching: 
-- 方法1: compute a distance between the propensity score for each treated subject with every control, then use nearest neighbor or optimal matching as before. 
-- 事实上: logit(log-odds) of the propensity score is often used, rather than the propensity score itself
+- 方法: 
+  - nearest neighbors: 进行 1 对 K 有放回或无放回匹配
+  - radius: 对每个实验组用户，匹配上所有得分差异小于指定 radius 的用户
+- 事实上tips: logit(log-odds) of the propensity score is often used, rather than the propensity score itself
   - The propensity score is bounded betwen [0,1], makeing many values seem similar
   - Logit of the propensity score is unbounded, this transformation essentially stretches the distribution, while preserving ranks
   - Match on logit(π) rather than π
 
-Caliper: 有个容忍的max distance，实际上一般用0.2 * sd of logit of the propensity score(当计算完propensity score from 逻辑回归, 然后take logit transform of the propensity score, then calculate the sd of the ransformed variable, set the caliper to 0.2 times the value from sd), it commonly done in practice because it semms to work well, but it's somewhat arbitrary, small caliper less bias, more varaince.
+Caliper: 有个容忍的max distance，当我们匹配用户的时候，我们要求每一对用户的得分差异不超过指定的 caliper，实际上一般用0.2 * sd of logit of the propensity score (当计算完propensity score from 逻辑回归, 然后take logit transform of the propensity score, then calculate the sd of the ransformed variable, set the caliper to 0.2 times the value from sd), it commonly done in practice because it semms to work well, but it's somewhat arbitrary, small caliper less bias, more varaince.
 
 ## R example
 - MatchIt packages 直接按照distance 做 matching
@@ -173,3 +188,12 @@ Caliper: 有个容忍的max distance，实际上一般用0.2 * sd of logit of th
 
 接受培训和收入的因果关系
 https://dango.rocks/blog/2019/01/20/Causal-Inference-Introduction2-Propensity-Score-Matching/
+
+```
+steps: 
+1.倾向性得分估算：倾向性得分一般来说是未知的，怎么估算？
+2.倾向性得分匹配：怎么匹配？
+3.平衡性检查：怎么量化匹配效果？
+4.因果效应估算：怎么从匹配后的两组用户中得到因果效应？
+5.敏感度分析：分析结论对于混淆变量选没选对（不满足 unconfoundedness ）是不是很敏感？
+```
