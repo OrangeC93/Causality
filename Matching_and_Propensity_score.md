@@ -122,6 +122,18 @@ Hidden bias: R packages sensitivity22k
 ## Propensity score
 Propensity score: the probability of receiving treatment rather than control, given covariates X. Define A=1 for treatment and A=0 for control, denote the proppensity score for subject i by πi, πi=P(A=1|Xi), 也就是给出协变量，treated的可能性
 
+```
+https://dango.rocks/blog/2019/01/20/Causal-Inference-Introduction2-Propensity-Score-Matching/
+“倾向性得分” 的定义很直观，是一个用户属于实验组的 “倾向性”： 𝑒(𝑥)=𝑃𝑟[𝑇=1|𝑋=𝑥]。
+倾向性得分是一种 “balancing score”。
+所有的 balancing score 都有两个很好的性质，可以总结为以下两个定理。
+Theorem 1 (Balancing Property). 𝑇𝑖⊥𝑋𝑖|𝑒(𝑋𝑖)。
+
+Theorem 2 (Unconfoundedness). 𝑇𝑖⊥𝑌𝑖0,𝑌𝑖1|𝑒(𝑋𝑖)。
+
+直观来说，对于倾向性得分相同的一群用户，treatment 和特征是独立的，treatment 和潜在结果也是独立的。
+因此，理论上，如果我们对每一个实验组用户都在对照组里匹配一个得分相等（要求有点严苛）的用户，我们就能得到同质的实验组和对照组，就可以假装我们做了一个 A/B Test 了，接着就可以随意地进行组间比较了。
+```
 比如：age was the only X variable and older people were more likely to get treatment. Then the propensity score would be larger for older ages P(A=1|age=60) > P(A=1|age=30), if person i has a propensity score value of 0.3, that means that, given their particular covariate values, there's a 30% chance they will be treated.
 
 Balancing score: there're 2 subjects have the same value of propensity score, but they possibly have different covaraite values X. Despite the different covaraite values, they were both equally likely to have been treated, which means that both subjects' X is just as likely to be found in the treatment. If you restrict to a subpopulation of subjects who have the same value of the propensity score, there should be balance in the two treatment groups.
