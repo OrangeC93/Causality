@@ -36,7 +36,7 @@ General MSM
 ![image](/pictures/general_msm.png)
 
 ## IPTW estimation
-Estimation in MSMs: 不能直接用regression estimation方法，因为有从founding，所以we can create the pseudo population(otained from IPTW) which is free from confounding(assuming ignorability and positivity), we can therefore estimate MSM parameters by solving estimating equations for the observed data of pseudo population
+Estimation in MSMs: 不能直接用regression estimation方法，因为有confounding，所以we can create the pseudo population(otained from IPTW) which is free from confounding (assuming ignorability and positivity), we can therefore estimate MSM parameters by solving estimating equations for the observed data of pseudo population
 ![image](/pictures/estimation_msm.png)
 
 具体步骤：
