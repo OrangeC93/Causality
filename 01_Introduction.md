@@ -50,7 +50,8 @@ Conditioning and Marginalizing:
 - Average causal effect as the expected value of Y1 minus Y0. We didn't say given X. Because we needed to condition on X to be able to link the observed outcome to the potential outcome. 
 - Marginal causual effect, meaning that does not include conidtioning on X, we'll just average over the X. 
 
-Standardization: involves conditioning means stratify and then marginzaling averaging over
+Stratification which is one way that causal effects can be estimated or identified. Essentially, you would **stratify(meaning conditioning)** on important variables, and then **average** over the distribution of those variables which is also known as standardization. 
+
 - Obtain a treatment effect within each stratum and then across stratum
 - Then weighting by the probability (size) of each stratum
 
@@ -74,8 +75,13 @@ Mean potential outcome for saxa:
 Mean potential outcome for sitagliptin:
 ![Image](/pictures/stratification2.png)
 
-问题：这可能会有many X varaibles needed to achieve ignorability，或者导致很多空值
+So what we can see here is that the, once we marginalize we end up with the mean of the expected value for saxagliptin and sitagliptin is exactly the same, it's 7.7% in each group. So, in other words, the potential outcome is exactly the same if you gave everybody saxagliptin versus everybody sitagliptin. In principle, that's a very effective way to get a causal effect.
 
+问题：
+- 这可能会有many X varaibles needed to achieve ignorability，
+- 导致很多空值
+  - For example, if you stratify on age and blood pressure, there'll be many combinations of age and blood pressure for which you have no data
+  - Thus, we need alternatives to standardization: 
 ## Incident user and active comparator designs
 举例：瑜伽对血压有影响吗？
 - incident user：完全没做过瑜伽 vs 从某一时间点开始，开始做瑜伽
