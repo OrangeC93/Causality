@@ -61,14 +61,15 @@ Blocking: paths can be blocked by conditioning on nodes in the path
   - AB开了会y影响G，但是AB无关
   - 如果G关掉了（conditioning）如果A开着，B就得关着，AB产生了association
 
-Rules for d separation:
+Rules for d separation: D here stands for dependence. So, what we're thinking of is a path that has a dependency between nodes and we want to know does a set of variable C remove the dependency. So, we will say that it desperate them:
 
 A path is d separated by a set of nodes C if:
-- it contains a chain and the middle part is in c
-- it contains a fork and the middle part is in c
-- it contains an inverted fork and the middle part is not in c, nor any decendants of it
+- it contains a chain D -> E -> F and the middle part is in C
+- it contains a fork D <- E ->F and the middle part is in C
+- it contains an inverted fork D -> E <- F and the middle part is not in C, nor any decendants of it
 
-Definition of d seperation: two nodes, A and B, are d separated by a set of nodes C if it blocks every path from A to B
+Definition of d seperation: two nodes, A and B, are d-separated by a set of nodes C if it blocks every path from A to B, then given C, A and B are dependent. 
+![image](/pictures/ignorability_assumption.png)
 
 ## Confounding revisited
 Frontdoor path: from A to Y is the one that begins with an arrow emanating out of A
