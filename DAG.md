@@ -72,17 +72,28 @@ Definition of d seperation: two nodes, A and B, are d-separated by a set of node
 ![image](/pictures/ignorability_assumption.png)
 
 ## Confounding revisited
+What matters is not identifying specific confounder, but a set of variables that're sufficient to control for confounding. In order to do that, we need to block backdoor path from treatment to outcome.
+
 Frontdoor path: from A to Y is the one that begins with an arrow emanating out of A
-- 比如： A->Z->Y，此时不用control Z， 如果我们想知道A对Y的影响
+- 比如： A->Y X->A, X->Y. A->Y is the frontdoor path from A to Y, A directly affects Y.
+- 比如： A->Z->Y X->A, X->Y. A->Z->Y is the frontdoor path from A to Y，A affects Y indirectly though its effect on Z. 如果我们想知道A对Y的影响, 此时不用control Z.
+- Causual mediation analysis involves understanding frontdoor paths from A to Y, 这个chapter不涉及这个
 
 Backdoor path: from A to Y that travel arrows going into A
-- To sufficiently control for confounding, must identify a set of variables that block all backdoor paths from trea tment to outcome.
+- 比如 A->Y X->A, X->Y, 这里 A<-X->Y is the backdoor path from A to Y
+- To sufficiently control for confounding, must identify a set of variables that block all backdoor paths from Trea tment to outcome.
 
 ## 方法1：Backdoor path criterion
-
-Sufficient sets of confounders: a set of variables X is sufficient to control for confounding if: (1)it blocks all backdoor paths from treatment to outcome (2) it doesn't include any descendants of treatment
+Sufficient sets of confounders: a set of variables X is sufficient to control for confounding if: 
+- It blocks all backdoor paths from treatment to outcome 
+- It doesn't include any descendants of treatment
 
 例子见pictures folder
+![image](/pictures/dag_eg1.png)
+![image](/pictures/dag_eg4.png)
+![image](/pictures/dag_eg3.png)
+![image](/pictures/dag_eg2.png)
+
 
 DAG的方法虽然好，但是现实生活中，很难画出fairly accurate DAG.
 
