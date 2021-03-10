@@ -46,15 +46,31 @@
 - Positivity assumption: for every set of values for X, treatment asignment was not determinitstic，也就是treatment assignment是随机的，如果不成立的话，可以适当移除特殊用户群
 
 ## 分层
-Standardization: involves stratifying and then averaging
-- obtain a treatment effect within each stratum and then across stratum, weighting by the probability (size) of each stratum
+Conditioning and Marginalizing:
+- Average causal effect as the expected value of Y1 minus Y0. We didn't say given X. Because we needed to condition on X to be able to link the observed outcome to the potential outcome. 
+- Marginal causual effect, meaning that does not include conidtioning on X, we'll just average over the X. 
+
+Standardization: involves conditioning means stratify and then marginzaling averaging over
+- Obtain a treatment effect within each stratum and then across stratum
+- Then weighting by the probability (size) of each stratum
 
 举例：对比两种糖尿病的治疗方法(treatment)：沙格列汀和西他列汀，outcome是MACE(主要不良心脏事件)，问题是沙格列汀用户在过去更可能会吃一些OAD的药(covariates)，而这种药会有更高的MACE风险
 
 解决方案：
 - 在两类subpopulations：用户过去有用过OAD，用户过去没有用过OAD 计算沙格列汀和西他列汀用户的MACE
 - 然后计算加权均值（根据proportion of people in subpopulation），如果在以前OAD使用变量中，treatment can be thought of as randomized，这就是因果影响
-![Image](/pictures/stratification1.png)![Image](/pictures/stratification2.png)
+
+Raw data
+- probability of MACE given Saxa=yes: 350/4000
+- probability of MACE given Saxa=no: 500/7000
+- Saxa group observed to have higher risk
+
+通过stratification data 可以发现：
+- Saxa users are more likely to have prior OAD use 
+- People with prior OAD use at higher risk for MACE
+
+![Image](/pictures/stratification1.png)
+![Image](/pictures/stratification2.png)
 
 问题：这可能会有many X varaibles needed to achieve ignorability，或者导致很多空值
 
