@@ -69,7 +69,9 @@ Raw data
 - Saxa users are more likely to have prior OAD use 
 - People with prior OAD use at higher risk for MACE
 
+Mean potential outcome for saxa:
 ![Image](/pictures/stratification1.png)
+Mean potential outcome for sitagliptin:
 ![Image](/pictures/stratification2.png)
 
 问题：这可能会有many X varaibles needed to achieve ignorability，或者导致很多空值
