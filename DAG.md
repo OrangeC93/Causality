@@ -98,16 +98,19 @@ Sufficient sets of confounders: a set of variables X is sufficient to control fo
 DAG的方法虽然好，但是现实生活中，很难画出fairly accurate DAG.
 
 ## 方法2：Disjunctive cause criterion
-另一个variable selection方法叫：Disjunctive cause criterion，控制所有影响treatment和outcome的variables
+另一个variable selection方法叫：Disjunctive cause criterion，control for all (observed) causes of exposure, the outcome and both, the investigators do not need to know the whole gragh, but rather, the list of variables that affect exposure or outcome.
+
+Property: if there's a set of observed variables that satisfy the backdoor path criterion, then:
+- The variables selected based on the disjunctive cause criterion will be sufficient to control for confounding
 
 举例：
-- observed pre treatment variables {MWV}
-- unobserved pre treatment variables {U1U2}
-- 假设我们知道WV are causes of AY or both, M is not a cause of either A or Y
+- observed pre treatment variables {M,W,V,}
+- unobserved pre treatment variables {U1,U2}
+- 假设我们知道W & V are causes of A, Y or both, M is not a cause of either A or Y
 
-因此：
-1. use all pre treatment covariates {MWV}
-2. use variables based on disjunctive {WV}
+因此：有两种方法
+1. use all pre treatment covariates {M,W.V}
+2. use variables based on disjunctive {W,V}
 
 总结：
 - 并不能选出最小set of variables to controlfor
