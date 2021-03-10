@@ -46,16 +46,19 @@ Decomposition: start with roots(nodes with no parents), proceed down the descend
 一个DAG只有一个probability distribution但是一个probability distribution可能对应多个DAG
 
 ## Paths and associations
-- 叉子形状： D<-E->F，DF有关
+- Fork形状： D<-E->F，DF有关
 - Chain形状：D->E->F，DF有关 
 - 反叉子形状：D->E<-F，E是碰撞机，但是DF无关
 
 ## Conditional independence (d-separation)
 Blocking: paths can be blocked by conditioning on nodes in the path
-- Chain Block: A->G->B, if we hold G fixed, make the same for AB, AB are not associated.
-- Folk Block: A<-G->B, if we condition on G, the path from A to B is blocked.
-- Collider Block: A->G<-B, if conditioning On G, AB would be associated.
-  - 比如AB是两个开关，G是灯，AB开了会y影响G，但是AB无关
+- Folk Block: A<-G->B, AB有关
+  - If we condition on G, the path from A to B is blocked
+- Chain Block: A->G->B, AB有关
+  - If we hold G fixed, make the same for AB, AB are not associated
+- Collider Block: A->G<-B, AB无关, 但是如果conditioning On G, AB would be associated
+  - 比如AB是两个开关，G是灯
+  - AB开了会y影响G，但是AB无关
   - 如果G关掉了（conditioning）如果A开着，B就得关着，AB产生了association
 
 Rules for d separation:
