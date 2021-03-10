@@ -1,7 +1,7 @@
 ## Confounding（混淆变量）
 Confounders are often defined variables that affect treatment and affect the outcome.
 - 如果我assign treatment on 投币器，会影响到treatment但是不会影响outcome，那么投币器就不是confounder
-- 如果一个人有癌症家族史，他更会得癌症（the outcome），但是家族史并不是影响treatment decision的因素，那么家族史不是一个confounder
+- 如果一个人有癌症家族史，他更会得癌症（the outcome），但是家族史并不是影响treatment的因素，那么家族史不是一个confounder
 - 如果老人有得心脑血管疾病的可能（the outcome）而且他更可能服用他汀类药物（the treatment），那么年龄就是一个confounder
 
 Confounder control
