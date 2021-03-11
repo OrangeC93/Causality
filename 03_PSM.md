@@ -81,11 +81,10 @@ Did matching work?
 ![Image](/pictures/smd_eg.png)
 
 ## Analyzing data after matching
-
-randomization test 也叫 permutation tests, exact test, 主要思想：
-- 计算test statistic from observed data
-- 假设null hypothesis of no treatment effect 是真的
-- 随机permute treatment assignment within pairs and 重新计算test statistic
+Randomization test 也叫 permutation tests, exact test, 主要思想：
+- 计算test statistic from **observed data**
+- 假设null hypothesis of **no treatment effect** 是真的
+- 随机**permute treatment assignment** within pairs and 重新计算test statistic
 - 重复多次，观察how unusual observed statistic is
 
 举例（分类）
