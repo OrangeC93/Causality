@@ -94,11 +94,17 @@ Randomization test 也叫 permutation tests, exact test, 主要思想：
 
 工具包：
 - McNemar test（分类）: 以上描述的等于McNemar test，r包里面有个macnemar.test(matrix)，直接可以用
+![Image](/pictures/mcnemar_test.png)
 - ttest（continious data）
+- ![Image](/pictures/psm_ttest.png)
 - 其他
   - conditional logistic regression: matched binary outcome data
-  - stratified cox model: time-to-event(survival) outcome data, baseline hazard stratified on matched sets
-  - generalized estimating equations
+  - stratified cox model: 
+    - time-to-event(survival) outcome data
+    - baseline hazard stratified on matched sets
+  - generalized estimating equations(GEE)
+    - Match ID variable used to specify clusters
+    - For binary outcomes, can estimate a causal risk difference, causal risk ratio, or causual odds ratio(depending on link function)
 
 ```
 https://dango.rocks/blog/2019/01/20/Causal-Inference-Introduction2-Propensity-Score-Matching/
