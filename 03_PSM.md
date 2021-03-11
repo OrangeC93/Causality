@@ -139,7 +139,8 @@ Hidden bias: R packages sensitivity22k or sensitivityfull
   - 如果this happens when 系数=5， 说明 not very sensitive to unmeasured confounding (hidden bias)
 
 ## Propensity score
-Propensity score: the probability of receiving treatment rather than control, given covariates X. Define A=1 for treatment and A=0 for control, denote the proppensity score for subject i by πi, πi=P(A=1|Xi), 也就是给出协变量，treated的可能性
+Propensity score: the probability of receiving treatment rather than control, given covariates X. 
+- Define A=1 for treatment and A=0 for control, denote the proppensity score for subject i by πi, πi=P(A=1|Xi), 也就是给出协变量，treated的可能性
 
 ```
 https://dango.rocks/blog/2019/01/20/Causal-Inference-Introduction2-Propensity-Score-Matching/
