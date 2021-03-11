@@ -114,15 +114,18 @@ https://dango.rocks/blog/2019/01/20/Causal-Inference-Introduction2-Propensity-Sc
 
 ## Sensitivity analysis
 Possible hidden bias: 
-- overt bias: there was imbalanced on observed covariates, we didn't fully control for these variables
-- hidden bias: 可能会遗落一些 unobserved confounders, ignorability assumption violated
+- overt bias: there was imbalanced on **observed** covariates, we didn't fully control for these variables
+- hidden bias: 可能会遗落一些 **unobserved** confounders, ignorability assumption violated
 
 Sensitivity analysis: 
 - 主要思想：if there're hidden bias, determine how severe it would have to be to change conclusions.
+  - Change from statistically significant to not
+  - Change in direction of effect
 
-Hidden bias: R packages sensitivity22k
-- πj和πk是probability that person j,k receives treatment, 假设j,k matched，so that their observed covariates Xj and Xk, are the same
-- 如果πj和πk相等，there‘s no hidden bias
+Hidden bias: R packages sensitivity22k or sensitivityfull
+- πj和πk是probability that person j,k receives treatment
+- 假设j,k perfectly matched，so that their observed covariates Xj and Xk, are the same
+- 如果πj和πk相等，there‘s **no hidden bias**
 
 ![Image](/pictures/sensitivity_analysis.png)
 - if 系数 =1， no overt bias
