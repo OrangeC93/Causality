@@ -1,6 +1,6 @@
 ## Observational studies
 
-随机实验： treatment A would be determined by coin toss-effectively erasing the arrow from X to A, so there's no backdoor path from A to Y. The distribution of pre treated variable X that affect Y are the same in both treatment groups (covariate balance). Thus, if the outcome distribution ends up differing, it will not be because of differences in X, X is dealt with at the design phase.
+随机实验： Treatment A would be determined by coin toss-effectively erasing the arrow from X to A, so there's no backdoor path from A to Y. The distribution of pre treated variable X that affect Y are the same in both treatment groups (covariate balance). Thus, if the outcome distribution ends up differing, it will not be because of differences in X, X is dealt with at the design phase.
 
 Why not always randomize:
 - 很贵
@@ -16,12 +16,17 @@ Why not always randomize:
 
 Matching方法： 可以将观察实验变成more randomized实验，主要思想就是match individuals in the treated group A=1 to individuals in the control group A=0 on the covariates X
 
-Matching好处：（1）在设计实验的步骤就控制住confounders，因此不用手动修改outcome（2）可以保证positivity assumption（3）outcome计算也变得很简单（4）matching之后就可以认为是个随机实验
+Matching好处：
+- 在设计实验的步骤就控制住confounders，因此不用手动修改outcome
+- 可以保证positivity assumption
+- outcome计算也变得很简单
+- matching之后就可以认为是个随机实验
 
 ## Overview of Matching
-Single covariate: easy
+Single covariate: easy.
 
-Multiple covariates：hard to match on full set of covariates. 在一个随机实验中，treated和control subject are not perfect matches either, the distribution of covariates is balanced between groups 叫做 stochastic balance，matching **closely** on covariates can achieve stochastic balance
+Multiple covariates：hard to match on full set of covariates. 
+- 在一个随机实验中，treated和control subject are not perfect matches either, the distribution of covariates is balanced between groups 叫做 stochastic balance，matching **closely** on covariates can achieve stochastic balance.
 
 目标人群：注意到我们 making the distribution of covariates in the control population(对照组) look like that in the treated population（实验组）, 因此，you're estimating causal effect of treatment (实验组) on the treated
 
